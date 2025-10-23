@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>대기현황 | 롯데월드 어드벤처</title>
     <link rel="icon" type="image/x-icon" href="https://adventure.lotteworld.com/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -51,7 +53,7 @@
         }
 
         .header {
-            padding: 25px 30px 20px 30px;
+            padding: 24px 30px;
             flex-shrink: 0;
             display: flex;
             flex-direction: column;
@@ -64,13 +66,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
+            position: relative;
         }
 
         .logo {
             width: 38px;
             height: 38px;
             object-fit: contain;
+            margin-left: 6px;
         }
 
         h1 {
@@ -78,6 +81,7 @@
             font-size: 28px;
             font-weight: 700;
             letter-spacing: -0.5px;
+            text-align: center;
         }
 
         .update-time {
@@ -97,6 +101,9 @@
             min-height: 0;
             padding: 30px;
             background: #f8f8f8;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: contain;
         }
 
         .attractions-grid::-webkit-scrollbar {
@@ -105,11 +112,12 @@
 
         .attractions-grid::-webkit-scrollbar-track {
             background: transparent;
+            margin: 8px 0;
         }
 
         .attractions-grid::-webkit-scrollbar-thumb {
             background: #d0d0d0;
-            border-radius: 4px;
+            border-radius: 8px;
         }
 
         .attractions-grid::-webkit-scrollbar-thumb:hover {
@@ -118,25 +126,24 @@
 
         .attraction-card {
             background: white;
-            border-radius: 14px;
+            border-radius: 16px;
             padding: 22px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 20px;
             min-height: 62px;
             cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: box-shadow 0.25s ease;
         }
 
         .attraction-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
 
         .attraction-card:active {
-            transform: translateY(0);
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
         }
 
         .attraction-left {
@@ -168,7 +175,7 @@
             font-size: 13px;
             font-weight: 500;
             padding: 6px 12px;
-            border-radius: 12px;
+            border-radius: 14px;
             white-space: nowrap;
             letter-spacing: -0.2px;
         }
@@ -194,11 +201,16 @@
             letter-spacing: -0.3px;
         }
 
+        .status.status-right.red {
+            color: #888;
+            background-color: rgba(136, 136, 136, 0.1);
+        }
+
         .wait-time {
             font-size: 16px;
             font-weight: 700;
             padding: 6px 12px;
-            border-radius: 12px;
+            border-radius: 14px;
             white-space: nowrap;
             letter-spacing: -0.3px;
         }
@@ -270,12 +282,8 @@
             }
 
             .header {
-                padding: 23px 30px 18px 30px;
-                gap: 7px;
-            }
-
-            .header-top {
-                gap: 11px;
+                padding: 22px 28px;
+                gap: 8px;
             }
 
             h1 {
@@ -286,6 +294,7 @@
             .logo {
                 width: 36px;
                 height: 36px;
+                margin-left: 5px;
             }
 
             .update-time {
@@ -296,6 +305,12 @@
             .attraction-card {
                 padding: 21px;
                 min-height: 58px;
+                border-radius: 15px;
+            }
+
+            .attractions-grid {
+                padding: 28px;
+                gap: 14px;
             }
 
             .attraction-name {
@@ -318,6 +333,11 @@
                 letter-spacing: -0.25px;
             }
 
+            .status.status-right.red {
+                color: #888;
+                background-color: rgba(136, 136, 136, 0.1);
+            }
+
             .footer {
                 padding: 12px 15px;
             }
@@ -338,23 +358,20 @@
 
         @media (max-width: 768px) {
             body {
-                padding: 0;
+                padding: 10px;
             }
 
             .container {
                 max-width: 100%;
-                height: 100%;
-                max-height: 100%;
-                border-radius: 0;
+                height: calc(100% - 20px);
+                max-height: calc(100% - 20px);
+                border-radius: 18px;
+                box-shadow: 0 0 40px rgba(0,0,0,0.25);
             }
 
             .header {
-                padding: 16px 18px 14px 18px;
-                gap: 6px;
-            }
-
-            .header-top {
-                gap: 10px;
+                padding: 18px 20px;
+                gap: 8px;
             }
 
             h1 {
@@ -365,6 +382,7 @@
             .logo {
                 width: 34px;
                 height: 34px;
+                margin-left: 5px;
             }
 
             .update-time {
@@ -373,19 +391,19 @@
             }
 
             .attractions-grid {
-                padding: 15px;
-                gap: 12px;
+                padding: 20px;
+                gap: 14px;
             }
 
             .attraction-card {
-                padding: 18px;
-                gap: 14px;
-                border-radius: 12px;
+                padding: 20px;
+                gap: 16px;
+                border-radius: 14px;
                 min-height: 58px;
             }
 
             .attraction-left {
-                gap: 6px;
+                gap: 8px;
             }
 
             .attraction-right {
@@ -399,20 +417,26 @@
 
             .status.status-left {
                 font-size: 11px;
-                padding: 4px 8px;
+                padding: 5px 10px;
+                border-radius: 12px;
             }
 
             .status.status-right {
                 font-size: 15px;
                 padding: 5px 11px;
-                border-radius: 10px;
+                border-radius: 12px;
                 letter-spacing: -0.25px;
+            }
+
+            .status.status-right.red {
+                color: #888;
+                background-color: rgba(136, 136, 136, 0.1);
             }
 
             .wait-time {
                 font-size: 15px;
                 padding: 5px 11px;
-                border-radius: 10px;
+                border-radius: 12px;
                 letter-spacing: -0.25px;
             }
 
@@ -437,22 +461,19 @@
 
         @media (max-width: 480px) {
             body {
-                padding: 0;
+                padding: 8px;
             }
 
             .container {
-                height: 100%;
-                max-height: 100%;
-                border-radius: 0;
+                height: calc(100% - 16px);
+                max-height: calc(100% - 16px);
+                border-radius: 16px;
+                box-shadow: 0 0 35px rgba(0,0,0,0.22);
             }
 
             .header {
-                padding: 13px 15px 12px 15px;
-                gap: 5px;
-            }
-
-            .header-top {
-                gap: 9px;
+                padding: 16px 18px;
+                gap: 7px;
             }
 
             h1 {
@@ -463,6 +484,7 @@
             .logo {
                 width: 32px;
                 height: 32px;
+                margin-left: 4px;
             }
 
             .update-time {
@@ -471,23 +493,23 @@
             }
 
             .attractions-grid {
-                padding: 15px;
-                gap: 10px;
+                padding: 18px;
+                gap: 12px;
             }
 
             .attraction-card {
-                padding: 16px;
-                gap: 12px;
-                border-radius: 11px;
+                padding: 18px;
+                gap: 14px;
+                border-radius: 13px;
                 min-height: 54px;
             }
 
             .attraction-left {
-                gap: 5px;
+                gap: 7px;
             }
 
             .attraction-right {
-                gap: 8px;
+                gap: 9px;
             }
 
             .attraction-name {
@@ -497,23 +519,242 @@
 
             .status.status-left {
                 font-size: 10px;
-                padding: 4px 7px;
+                padding: 4px 9px;
+                border-radius: 11px;
             }
 
             .status.status-right {
                 font-size: 14px;
                 padding: 5px 10px;
-                border-radius: 9px;
+                border-radius: 11px;
                 letter-spacing: -0.2px;
+            }
+
+            .status.status-right.red {
+                color: #888;
+                background-color: rgba(136, 136, 136, 0.1);
             }
 
             .wait-time {
                 font-size: 14px;
                 padding: 5px 10px;
-                border-radius: 9px;
+                border-radius: 11px;
                 letter-spacing: -0.2px;
             }
 
+
+            .footer {
+                padding: 10px 15px;
+            }
+
+            .footer p {
+                font-size: 10px;
+                font-weight: 500;
+                margin: 0 0 2px 0;
+                text-align: center;
+            }
+
+            .footer .credit {
+                font-size: 7px;
+                margin: 0;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 360px) {
+            body {
+                padding: 6px;
+            }
+
+            .container {
+                height: calc(100% - 12px);
+                max-height: calc(100% - 12px);
+                border-radius: 14px;
+                box-shadow: 0 0 30px rgba(0,0,0,0.2);
+            }
+
+            .header {
+                padding: 14px 16px;
+                gap: 6px;
+            }
+
+            h1 {
+                font-size: 21px;
+                letter-spacing: -0.35px;
+            }
+
+            .logo {
+                width: 28px;
+                height: 28px;
+                margin-left: 4px;
+            }
+
+            .update-time {
+                font-size: 10px;
+            }
+
+            .attractions-grid {
+                padding: 16px;
+                gap: 11px;
+            }
+
+            .attraction-card {
+                padding: 16px;
+                min-height: 52px;
+                gap: 12px;
+                border-radius: 12px;
+            }
+
+            .attraction-left {
+                gap: 6px;
+            }
+
+            .attraction-right {
+                gap: 8px;
+            }
+
+            .attraction-name {
+                font-size: 13px;
+                letter-spacing: -0.2px;
+            }
+
+            .status.status-left {
+                font-size: 9px;
+                padding: 4px 8px;
+                border-radius: 10px;
+            }
+
+            .status.status-right {
+                font-size: 13px;
+                padding: 4px 9px;
+                border-radius: 10px;
+                letter-spacing: -0.2px;
+            }
+
+            .status.status-right.red {
+                color: #888;
+                background-color: rgba(136, 136, 136, 0.1);
+            }
+
+            .wait-time {
+                font-size: 13px;
+                padding: 4px 9px;
+                border-radius: 10px;
+                letter-spacing: -0.2px;
+            }
+
+            .footer {
+                padding: 10px 15px;
+            }
+
+            .footer p {
+                font-size: 9px;
+                font-weight: 500;
+                margin: 0 0 2px 0;
+                text-align: center;
+            }
+
+            .footer .credit {
+                font-size: 7px;
+                margin: 0;
+                text-align: center;
+            }
+        }
+
+        @media (min-width: 1025px) and (max-width: 1366px) {
+            .container {
+                max-width: 720px;
+            }
+        }
+
+        @media (min-width: 1367px) {
+            .container {
+                max-width: 750px;
+            }
+        }
+
+        @media (max-height: 500px) and (orientation: landscape) {
+            body {
+                padding: 8px;
+            }
+
+            .container {
+                max-width: 100%;
+                height: calc(100% - 16px);
+                max-height: calc(100% - 16px);
+                border-radius: 16px;
+                box-shadow: 0 0 35px rgba(0,0,0,0.22);
+            }
+
+            .header {
+                padding: 16px 18px;
+                gap: 7px;
+            }
+
+            h1 {
+                font-size: 22px;
+                letter-spacing: -0.35px;
+            }
+
+            .logo {
+                width: 30px;
+                height: 30px;
+                margin-left: 4px;
+            }
+
+            .update-time {
+                font-size: 10px;
+            }
+
+            .attractions-grid {
+                padding: 18px;
+                gap: 12px;
+            }
+
+            .attraction-card {
+                padding: 18px;
+                min-height: 54px;
+                gap: 14px;
+                border-radius: 13px;
+            }
+
+            .attraction-left {
+                gap: 7px;
+            }
+
+            .attraction-right {
+                gap: 9px;
+            }
+
+            .attraction-name {
+                font-size: 14px;
+                letter-spacing: -0.2px;
+            }
+
+            .status.status-left {
+                font-size: 10px;
+                padding: 4px 9px;
+                border-radius: 11px;
+            }
+
+            .status.status-right {
+                font-size: 14px;
+                padding: 5px 10px;
+                border-radius: 11px;
+                letter-spacing: -0.2px;
+            }
+
+            .status.status-right.red {
+                color: #888;
+                background-color: rgba(136, 136, 136, 0.1);
+            }
+
+            .wait-time {
+                font-size: 14px;
+                padding: 5px 10px;
+                border-radius: 11px;
+                letter-spacing: -0.2px;
+            }
 
             .footer {
                 padding: 10px 15px;
@@ -538,8 +779,8 @@
     <div class="container">
         <div class="header">
             <div class="header-top">
-                <img src="https://adventure.lotteworld.com/assets/time-hSflU71B.png" alt="롯데월드" class="logo">
                 <h1>롯데월드 어드벤처 대기현황</h1>
+                <img src="https://adventure.lotteworld.com/assets/time-hSflU71B.png" alt="롯데월드" class="logo">
             </div>
             <div class="update-time" id="updateTime"></div>
         </div>
@@ -551,17 +792,22 @@
     </div>
 
     <script>
-        window.onbeforeunload = function (e) {
+        window.onbeforeunload = function () {
             return 0;
         };
 
+        const RED_STATUSES = ['운행준비', '운행마침', '정기점검', '일시점검', '일일점검', '중간점검', '정기운휴', '예약 마감', '마감', '트랙건조', '우천대기', '폭설대기', '폭염대기', '혹한대기'];
+        const GREEN_STATUSES = ['정상운행', '예약 가능'];
+        const MIDDLE_PRIORITY_NAMES = ['문보트', '툼 오브 호러', '게임팩토리', '게임빌리지'];
+        const CLOSED_STATUSES = ['우천대기', '혹한대기', '폭설대기', '폭염대기', '트랙건조', '일시점검', '일일점검', '정기점검', '중간점검', '정기운휴', '운행마침', '운행종료'];
+        const SINGLE_RIDER_ATTRACTIONS = ['아트란티스', '스페인해적선', '후렌치레볼루션'];
+        const OPERATING_STATUSES = ['예약 마감', '예약 가능', '대기 마감', '대기마감'];
+        const WEATHER_STATUSES = ['우천대기', '폭설대기', '폭염대기', '혹한대기'];
+
         function getStatusColor(status) {
             if (!status) return 'green';
-            const redStatuses = ['운행준비', '운행마침', '정기점검', '일시점검', '일일점검', '중간점검', '정기운휴', '예약 마감', '마감', '트랙건조', '우천대기', '폭설대기', '폭염대기', '혹한대기'];
-            const greenStatuses = ['정상운행', '예약 가능'];
-            
-            if (redStatuses.some(rs => status.includes(rs))) return 'red';
-            if (greenStatuses.some(gs => status.includes(gs))) return 'green';
+            if (RED_STATUSES.some(rs => status.includes(rs))) return 'red';
+            if (GREEN_STATUSES.some(gs => status.includes(gs))) return 'green';
             return 'red';
         }
 
@@ -577,12 +823,8 @@
             const name = attraction.mstAtrctNm || '';
             const waitTime = attraction.waitTm ? parseInt(attraction.waitTm.trim()) : 0;
             
-            const middlePriorityNames = ['문보트', '툼 오브 호러', '게임팩토리', '게임빌리지'];
-            if (middlePriorityNames.some(mn => name.includes(mn))) return 500000;
-            
-            const closedStatuses = ['우천대기', '혹한대기', '폭설대기', '폭염대기', '트랙건조', '일시점검', '일일점검', '정기점검', '중간점검', '정기운휴', '운행마침', '운행종료'];
-            if (closedStatuses.some(cs => status.includes(cs))) return 1000000;
-            
+            if (MIDDLE_PRIORITY_NAMES.some(mn => name.includes(mn))) return 500000;
+            if (CLOSED_STATUSES.some(cs => status.includes(cs))) return 1000000;
             if (waitTime > 0) return waitTime;
             return 600000;
         }
@@ -595,20 +837,20 @@
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        srchBrdngResvYn: "",
-                        srchPstnCd: "",
-                        srchSnglYn: "",
-                        srchAcmpyYn: "",
-                        srchMtntYn: "",
-                        srchInfntEquYn: "",
+                        srchBrdngResvYn: '',
+                        srchPstnCd: '',
+                        srchSnglYn: '',
+                        srchAcmpyYn: '',
+                        srchMtntYn: '',
+                        srchInfntEquYn: '',
                         srchTall: 0,
-                        srchAtrctSttsCd: "",
+                        srchAtrctSttsCd: '',
                         srchTagList: [],
                         srchChoiceCnt: 0,
-                        shopSysCd: "",
-                        storeCd: "HC01801",
-                        langCd: "HC01701",
-                        deviceType: "mobile"
+                        shopSysCd: '',
+                        storeCd: 'HC01801',
+                        langCd: 'HC01701',
+                        deviceType: 'mobile'
                     })
                 });
                 
@@ -656,8 +898,7 @@
                     const waitTime = attraction.waitTm ? parseInt(attraction.waitTm.trim()) : 0;
                     const name = attraction.mstAtrctNm;
 
-                    const singleRiderAttractions = ['아트란티스', '스페인해적선', '후렌치레볼루션'];
-                    const isSingleRider = singleRiderAttractions.some(sr => name.includes(sr)) && !name.includes('5G');
+                    const isSingleRider = SINGLE_RIDER_ATTRACTIONS.some(sr => name.includes(sr)) && !name.includes('5G');
 
                     if (isSingleRider) {
                         const singleRiderSpan = document.createElement('span');
@@ -666,8 +907,7 @@
                         leftDiv.appendChild(singleRiderSpan);
                     }
 
-                    const operatingStatuses = ['예약 마감', '예약 가능', '대기 마감', '대기마감'];
-                    const isOperating = status && operatingStatuses.some(s => status.includes(s));
+                    const isOperating = status && OPERATING_STATUSES.some(s => status.includes(s));
 
                     if (isOperating) {
                         const statusSpan = document.createElement('span');
@@ -682,8 +922,7 @@
                     const rightDiv = document.createElement('div');
                     rightDiv.className = 'attraction-right';
 
-                    const weatherStatuses = ['우천대기', '폭설대기', '폭염대기', '혹한대기'];
-                    const hasWeatherStatus = status && weatherStatuses.some(ws => status.includes(ws));
+                    const hasWeatherStatus = status && WEATHER_STATUSES.some(ws => status.includes(ws));
                     const isMaintenanceOrClosed = status && (status.includes('점검') || status.includes('운행종료') || status.includes('운행마침') || status.includes('운휴') || status.includes('트랙건조') || hasWeatherStatus);
                     if (waitTime > 0 && !isMaintenanceOrClosed) {
                         const waitSpan = document.createElement('span');
