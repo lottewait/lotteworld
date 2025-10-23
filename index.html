@@ -188,6 +188,12 @@
             background-color: rgba(112, 87, 255, 0.1);
         }
 
+        .status.status-right {
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+
         .wait-time {
             font-size: 16px;
             font-weight: 700;
@@ -302,9 +308,14 @@
                 letter-spacing: -0.25px;
             }
 
-            .status {
+            .status.status-left {
                 font-size: 12px;
                 letter-spacing: -0.2px;
+            }
+
+            .status.status-right {
+                font-size: 15px;
+                letter-spacing: -0.25px;
             }
 
             .footer {
@@ -386,9 +397,16 @@
                 letter-spacing: -0.25px;
             }
 
-            .status {
+            .status.status-left {
                 font-size: 11px;
                 padding: 4px 8px;
+            }
+
+            .status.status-right {
+                font-size: 15px;
+                padding: 5px 11px;
+                border-radius: 10px;
+                letter-spacing: -0.25px;
             }
 
             .wait-time {
@@ -477,9 +495,16 @@
                 letter-spacing: -0.2px;
             }
 
-            .status {
+            .status.status-left {
                 font-size: 10px;
                 padding: 4px 7px;
+            }
+
+            .status.status-right {
+                font-size: 14px;
+                padding: 5px 10px;
+                border-radius: 9px;
+                letter-spacing: -0.2px;
             }
 
             .wait-time {
@@ -636,7 +661,7 @@
 
                     if (isSingleRider) {
                         const singleRiderSpan = document.createElement('span');
-                        singleRiderSpan.className = 'status single-rider';
+                        singleRiderSpan.className = 'status status-left single-rider';
                         singleRiderSpan.textContent = '싱글라이더';
                         leftDiv.appendChild(singleRiderSpan);
                     }
@@ -646,7 +671,7 @@
 
                     if (isOperating) {
                         const statusSpan = document.createElement('span');
-                        statusSpan.className = 'status';
+                        statusSpan.className = 'status status-left';
                         statusSpan.classList.add(getStatusColor(status));
                         statusSpan.textContent = status;
                         leftDiv.appendChild(statusSpan);
@@ -670,7 +695,7 @@
 
                     if (status && status !== '정상운행' && status !== '운행준비' && !isOperating) {
                         const statusSpan = document.createElement('span');
-                        statusSpan.className = 'status';
+                        statusSpan.className = 'status status-right';
                         statusSpan.classList.add(getStatusColor(status));
                         statusSpan.textContent = status;
                         rightDiv.appendChild(statusSpan);
